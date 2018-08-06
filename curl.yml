@@ -2,84 +2,85 @@
     - task_name: Install cURL
     - package_name: curl
     - package_state: latest
+  hosts: localhost
   tasks:
     - name: "{{ task_name }}"
       yum:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-        when: ansible_os_family == 'RedHat'
+      when: ansible_os_family == 'RedHat'
     - name: "{{ task_name }}"
       apt:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-        when: ansible_os_family == 'Debian' # or ansible_distribution == 'DilOS'
+      when: ansible_os_family == 'Debian' # or ansible_distribution == 'DilOS'
     - name: "{{ task_name }}"
       zypper:
         name: "{{ packge_name }}"
         state: "{{ package_state }}"
-        when: ansible_os_family == 'Suse'
+      when: ansible_os_family == 'Suse'
     - name: "{{ task_name }}"
       apk:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-        when: ansible_os_family == 'Alpine'
+      when: ansible_os_family == 'Alpine'
     # - name: "{{ task_name }}"
     #   xbps:
     #     name: "{{ package_name }}"
     #     state: "{{ package_state }}"
-    #     when: ansible_distribution == 'Void'
+    #   when: ansible_distribution == 'Void'
     - name: "{{ task_name }}"
       opkg:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-        when: ansible_distribution == 'OpenWrt'
-    - name: "{{ task_name }}"
-      pacman:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-        when: ansible_os_family == 'Archlinux'
-    - name: "{{ task_name }}"
-      emerge:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-        when: ansible_os_family == 'Gentoo'
+      when: ansible_distribution == 'OpenWrt'
+    # - name: "{{ task_name }}"
+    #   pacman:
+    #     name: "{{ package_name }}"
+    #     state: "{{ package_state }}"
+    #   when: ansible_os_family == 'Archlinux'
+    # - name: "{{ task_name }}"
+    #   emerge:
+    #     name: "{{ package_name }}"
+    #     state: "{{ package_state }}"
+    #   when: ansible_os_family == 'Gentoo'
     - name: "{{ task_name }}"
       slackpkg:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-        when: ansible_os_family == 'Slackware'
+      when: ansible_os_family == 'Slackware'
     - name: "{{ task_name }}"
       urpmi:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-        when: ansible_os_family == 'Mandrake'
-    - name: "{{ task_name }}"
-      pkg:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-        when: ansible_os_family == 'FreeBSD' or ansible_distribution == 'Dragonfly'
-    - name: "{{ task_name }}"
-      pkg_add:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-        when: ansible_os_distribution == 'OpenBSD'
-    - name: "{{ task_name }}"
-      pkgsrc:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-        when: ansible_distribution in ['NetBSD', 'SmartOS']
+      when: ansible_os_family == 'Mandrake'
+    # - name: "{{ task_name }}"
+    #   pkg:
+    #     name: "{{ package_name }}"
+    #     state: "{{ package_state }}"
+    #   when: ansible_os_family == 'FreeBSD' or ansible_distribution == 'Dragonfly'
+    # - name: "{{ task_name }}"
+    #   pkg_add:
+    #     name: "{{ package_name }}"
+    #     state: "{{ package_state }}"
+    #   when: ansible_os_distribution == 'OpenBSD'
+    # - name: "{{ task_name }}"
+    #   pkgsrc:
+    #     name: "{{ package_name }}"
+    #     state: "{{ package_state }}"
+    #   when: ansible_distribution in ['NetBSD', 'SmartOS']
     # - name: "{{ task_name }}"
     #   pkgin:
     #     name: "{{ package_name }}"
     #     state: "{{ package_state }}"
-    #     when: ansible_distribution == 'MINIX'
+    #   when: ansible_distribution == 'MINIX'
     - name: "{{ task_name }}"
-      brew:
+      homebrew:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-        when: ansible_os_family == 'Darwin'
+      when: ansible_os_family == 'Darwin'
     - name: "{{ task_name }}"
-      choco:
+      win_chocolatey:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-        when: ansible_os_family == 'Windows'
+      when: ansible_os_family == 'Windows'
