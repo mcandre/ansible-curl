@@ -1,11 +1,17 @@
-# ansible-curl: an Ansible playbook for installing cURL
+# ansible-curl: an Ansible playbook for installing/uninstalling cURL
 
 # EXAMPLE
 
 ```console
-$ ansible-playbook curl.yml
-$ curl http://icanhazip.com
+$ ansible-playbook playbooks/install-curl.yml
+
+$ curl -s http://icanhazip.com
 1.2.3.4
+
+$ ansible-playbook playbooks/uninstall-curl.yml
+
+$ command -V curl
+-bash: command: curl: not found
 ```
 
 # RUNTIME REQUIREMENTS
@@ -14,7 +20,7 @@ $ curl http://icanhazip.com
 
 # BUILDTIME REQUIREMENTS
 
-* [tonixxx](https://github.com/mcandre/tonixxx)
+* [tonixxx](https://github.com/mcandre/tonixxx) 0.0.6
 * [Vagrant](https://www.vagrantup.com/)
 
 # TEST

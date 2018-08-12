@@ -2,8 +2,9 @@ project: ansible-curl
 
 steps:
   - cd "$TONIXXX_SYNC"
-  - ansible-playbook curl.yml
-  - curl http://icanhazip.com
+  - sudo pip install -r requirements.txt
+  - invoke lint
+  - sudo invoke test
 
 recipes:
   # - label: dragonflybsd-amd64
@@ -30,18 +31,12 @@ recipes:
   #   box: mcandre/ansible-curl-testbot-void-i386
   # - label: linux-uclibc-amd64
   #   box: mcandre/ansible-curl-testbot-openwrt-amd64
-  #   steps:
+  #   presteps:
   #     - sudo find /vagrant -exec chown vagrant:vagrant {} +
-  #     - cd "$TONIXXX_SYNC"
-  #     - ansible-playbook curl.yml
-  #     - curl http://icanhazip.com
   # - label: linux-uclibc-i386
   #   box: mcandre/ansible-curl-testbot-openwrt-i386
-  #   steps:
+  #   presteps:
   #     - sudo find /vagrant -exec chown vagrant:vagrant {} +
-  #     - cd "$TONIXXX_SYNC"
-  #     - ansible-playbook curl.yml
-  #     - curl http://icanhazip.com
   # - label: macos-amd64
   #   box: mcandre/ansible-curl-testbot-macos
   # - label: minix-i386
