@@ -5,10 +5,9 @@ from invoke import run, task
 
 @task
 def test():
-    run('ansible-playbook playbooks/install-curl.yml')
+    run('ansible-playbook -i hosts.ini playbooks/install-curl.yml')
     run('curl -s http://icanhazip.com')
-    run('ansible-playbook playbooks/uninstall-curl.yml')
-    run('command -V curl')
+    run('ansible-playbook -i hosts.ini playbooks/uninstall-curl.yml')
 
 
 @task
@@ -32,6 +31,12 @@ def flake8():
 
 
 @task
+def yamllint():
+    run('yamllint .yamllint')
+    run('yamllint .')
+
+
+@task
 def ansible_check():
     for f in glob.glob("playbooks%s*.yml" % os.sep):
         run('ansible-playbook --check %s' % f)
@@ -40,6 +45,23 @@ def ansible_check():
         run('ansible-playbook --check %s' % f)
 
 
-@task(pre=[pep8, pylint, pyflakes, flake8, ansible_check])
+@task
+def ansible_lint():
+    for f in glob.glob("playbooks%s*.yml" % os.sep):
+        run('ansible-lint %s' % f)
+
+    for f in glob.glob("playbook%s*.yml" % os.sep):
+        run('ansible-lint %s' % f)
+
+
+@task(pre=[
+    pep8,
+    pylint,
+    pyflakes,
+    flake8,
+    yamllint,
+    ansible_check,
+    ansible_lint
+])
 def lint():
     pass

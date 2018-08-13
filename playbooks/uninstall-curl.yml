@@ -1,18 +1,17 @@
+---
 - vars:
     - task_name: Uninstall cURL
     - package_name: curl
     - package_state: absent
-  hosts: localhost
+  hosts: all
   tasks:
     - name: "{{ task_name }} (RHEL, dnf)"
-      dnf:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
+      debug:
+        msg: "Keeping {{ package_name }} installed in order to maintain RPM base install integrity"
       when: ansible_os_family == 'RedHat' and ansible_pkg_mgr == 'dnf'
     - name: "{{ task_name }} (RHEL, yum)"
-      yum:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
+      debug:
+        msg: "Keeping {{ package_name }} installed in order to maintain RPM base install integrity"
       when: ansible_os_family == 'RedHat' and ansible_pkg_mgr == 'yum'
     - name: "{{ task_name }} (Debian)"
       apt:

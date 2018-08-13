@@ -1,8 +1,9 @@
+---
 - vars:
     - task_name: Install cURL
     - package_name: curl
     - package_state: latest
-  hosts: localhost
+  hosts: all
   tasks:
     - name: "{{ task_name }} (RHEL, dnf)"
       dnf:
