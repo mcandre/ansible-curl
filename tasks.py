@@ -1,4 +1,4 @@
-import glob
+import fnmatch
 import os
 from invoke import run, task
 
@@ -33,7 +33,17 @@ def flake8():
 @task
 def yamllint():
     run('yamllint .yamllint')
-    run('yamllint .')
+
+    matches = []
+    for root, dirname, filenames in os.walk("."):
+        for filename in fnmatch.filter(filenames, "*.yml"):
+            matches.append(os.path.join(root, filename))
+
+        for filename in fnmatch.filter(filenames, "*.yaml"):
+            matches.append(os.path.join(root, filename))
+
+    for m in matches:
+        run('yamllint %s' % m)
 
 
 @task
