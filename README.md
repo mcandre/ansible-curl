@@ -3,12 +3,12 @@
 # EXAMPLE
 
 ```console
-$ ansible-playbook playbooks/install-curl.yml
+$ ansible-playbook -i hosts.ini playbooks/install-curl.yml
 
 $ curl -s http://icanhazip.com
 1.2.3.4
 
-$ ansible-playbook playbooks/uninstall-curl.yml
+$ ansible-playbook -i hosts.ini playbooks/uninstall-curl.yml
 
 $ command -V curl
 -bash: command: curl: not found
