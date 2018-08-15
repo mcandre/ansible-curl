@@ -1,4 +1,5 @@
 import fnmatch
+import glob
 import os
 from invoke import run, task
 
@@ -26,16 +27,11 @@ def pyflakes():
 
 
 @task
-def flake8():
-    run('flake8 .')
-
-
-@task
 def yamllint():
     run('yamllint .yamllint')
 
     matches = []
-    for root, dirname, filenames in os.walk("."):
+    for root, _, filenames in os.walk("."):
         for filename in fnmatch.filter(filenames, "*.yml"):
             matches.append(os.path.join(root, filename))
 
@@ -68,7 +64,6 @@ def ansible_lint():
     pep8,
     pylint,
     pyflakes,
-    flake8,
     yamllint,
     ansible_check,
     ansible_lint

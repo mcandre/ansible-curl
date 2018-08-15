@@ -22,10 +22,10 @@ recipes:
   #   box: mcandre/ansible-curl-testbot-smartos
   - label: linux-glibc-2.17-amd64
     box: mcandre/ansible-curl-testbot-centos
-  # - label: linux-glibc-2.24-amd64
-  #   box: mcandre/ansible-curl-testbot-debian-amd64
-  # - label: linux-glibc-2.24-i386
-  #   box: mcandre/ansible-curl-testbot-debian-i386
+  - label: linux-glibc-2.24-amd64
+    box: mcandre/ansible-curl-testbot-debian-amd64
+  - label: linux-glibc-2.24-i386
+    box: mcandre/ansible-curl-testbot-debian-i386
   # - label: linux-musl-amd64
   #   box: mcandre/ansible-curl-testbot-void-amd64
   # - label: linux-musl-i386
