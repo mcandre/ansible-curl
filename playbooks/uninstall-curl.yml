@@ -3,6 +3,7 @@
     - task_name: Uninstall cURL
     - package_name: curl
     - package_state: absent
+    - ansible_python_interpreter: python
   hosts: all
   tasks:
     - name: "{{ task_name }} (RHEL, dnf)"

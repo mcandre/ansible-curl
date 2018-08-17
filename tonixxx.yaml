@@ -10,8 +10,8 @@ steps:
 recipes:
   # - label: dragonflybsd-amd64
   #   box: mcandre/ansible-curl-testbot-dragonfly
-  # - label: freebsd-amd64
-  #   box: mcandre/ansible-curl-testbot-freebsd
+  - label: freebsd-amd64
+    box: mcandre/ansible-curl-testbot-freebsd
   # - label: haiku-amd64
   #   box: mcandre/ansible-curl-testbot-haiku-amd64
   #   guesttype: Haiku

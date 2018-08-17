@@ -2,7 +2,8 @@
 - vars:
     - task_name: Install cURL
     - package_name: curl
-    - package_state: latest
+    - package_state: present
+    - ansible_python_interpreter: python
   hosts: all
   tasks:
     - name: "{{ task_name }} (RHEL, dnf)"

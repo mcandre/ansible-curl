@@ -20,7 +20,7 @@ $ command -V curl
 
 # BUILDTIME REQUIREMENTS
 
-* [tonixxx](https://github.com/mcandre/tonixxx) 0.0.7
+* [tonixxx](https://github.com/mcandre/tonixxx) 0.0.8
 * [Vagrant](https://www.vagrantup.com/)
 
 # TEST
