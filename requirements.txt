@@ -1,7 +1,1 @@
-invoke==0.10.1
-pep8==1.7.1
-pylint==1.5.0
-pyflakes==2.0.0
 ansible==2.6.2
-ansible-lint==3.4.23
-yamllint==1.11.1
