@@ -2,57 +2,57 @@
 project: ansible-curl
 
 steps:
-  - cd "$TONIXXX_SYNC"
-  - sudo pip install -r requirements.txt
-  - invoke lint
-  - sudo invoke test
+    - cd "$TONIXXX_SYNC"
+    - sudo pip install -r requirements.txt
+    - invoke lint
+    - sudo invoke test
 
 recipes:
-  # - label: dragonflybsd-amd64
-  #   box: mcandre/ansible-curl-testbot-dragonfly
-  - label: freebsd-amd64
-    box: mcandre/ansible-curl-testbot-freebsd
-  # - label: haiku-amd64
-  #   box: mcandre/ansible-curl-testbot-haiku-amd64
-  #   guesttype: Haiku
-  # - label: hardenedbsd-amd64
-  #   box: mcandre/ansible-curl-testbot-hardenedbsd
-  # - label: illumos-amd64
-  #   guesttype: SmartOSGZ
-  #   box: mcandre/ansible-curl-testbot-smartos
-  - label: linux-glibc-2.17-amd64
-    box: mcandre/ansible-curl-testbot-centos
-  - label: linux-glibc-2.24-amd64
-    box: mcandre/ansible-curl-testbot-debian-amd64
-  - label: linux-glibc-2.24-i386
-    box: mcandre/ansible-curl-testbot-debian-i386
-  # - label: linux-musl-amd64
-  #   box: mcandre/ansible-curl-testbot-void-amd64
-  # - label: linux-musl-i386
-  #   box: mcandre/ansible-curl-testbot-void-i386
-  # - label: linux-uclibc-amd64
-  #   box: mcandre/ansible-curl-testbot-openwrt-amd64
-  #   presteps:
-  #     - sudo find /vagrant -exec chown vagrant:vagrant {} +
-  # - label: linux-uclibc-i386
-  #   box: mcandre/ansible-curl-testbot-openwrt-i386
-  #   presteps:
-  #     - sudo find /vagrant -exec chown vagrant:vagrant {} +
-  # - label: macos-amd64
-  #   box: mcandre/ansible-curl-testbot-macos
-  # - label: minix-i386
-  #   box: mcandre/ansible-curl-testbot-minix
-  # - label: netbsd-amd64
-  #   box: mcandre/ansible-curl-testbot-netbsd-amd64
-  # - label: netbsd-i386
-  #   box: mcandre/ansible-curl-testbot-netbsd-i386
-  # - label: openbsd-amd64
-  #   box: mcandre/ansible-curl-testbot-openbsd-amd64
-  # - label: openbsd-i386
-  #   box: mcandre/ansible-curl-testbot-openbsd-i386
-  # - label: windows-amd64
-  #   guesttype: Cygwin
-  #   box: mcandre/ansible-curl-testbot-windows-amd64
-  # - label: windows-i386
-  #   guesttype: Cygwin
-  #   box: mcandre/ansible-curl-testbot-windows-i386
+    # - label: dragonflybsd-amd64
+    #   box: mcandre/ansible-curl-testbot-dragonfly
+    - label: freebsd-amd64
+      box: mcandre/ansible-curl-testbot-freebsd
+    # - label: haiku-amd64
+    #   box: mcandre/ansible-curl-testbot-haiku-amd64
+    #   guesttype: Haiku
+    # - label: hardenedbsd-amd64
+    #   box: mcandre/ansible-curl-testbot-hardenedbsd
+    # - label: illumos-amd64
+    #   guesttype: SmartOSGZ
+    #   box: mcandre/ansible-curl-testbot-smartos
+    - label: linux-glibc-2.17-amd64
+      box: mcandre/ansible-curl-testbot-centos
+    - label: linux-glibc-2.24-amd64
+      box: mcandre/ansible-curl-testbot-debian-amd64
+    - label: linux-glibc-2.24-i386
+      box: mcandre/ansible-curl-testbot-debian-i386
+    # - label: linux-musl-amd64
+    #   box: mcandre/ansible-curl-testbot-void-amd64
+    # - label: linux-musl-i386
+    #   box: mcandre/ansible-curl-testbot-void-i386
+    # - label: linux-uclibc-amd64
+    #   box: mcandre/ansible-curl-testbot-openwrt-amd64
+    #   presteps:
+    #       - sudo find /vagrant -exec chown vagrant:vagrant {} +
+    # - label: linux-uclibc-i386
+    #   box: mcandre/ansible-curl-testbot-openwrt-i386
+    #   presteps:
+    #       - sudo find /vagrant -exec chown vagrant:vagrant {} +
+    # - label: macos-amd64
+    #   box: mcandre/ansible-curl-testbot-macos
+    # - label: minix-i386
+    #   box: mcandre/ansible-curl-testbot-minix
+    # - label: netbsd-amd64
+    #   box: mcandre/ansible-curl-testbot-netbsd-amd64
+    # - label: netbsd-i386
+    #   box: mcandre/ansible-curl-testbot-netbsd-i386
+    # - label: openbsd-amd64
+    #   box: mcandre/ansible-curl-testbot-openbsd-amd64
+    # - label: openbsd-i386
+    #   box: mcandre/ansible-curl-testbot-openbsd-i386
+    # - label: windows-amd64
+    #   guesttype: Cygwin
+    #   box: mcandre/ansible-curl-testbot-windows-amd64
+    # - label: windows-i386
+    #   guesttype: Cygwin
+    #   box: mcandre/ansible-curl-testbot-windows-i386
