@@ -16,7 +16,7 @@ $ command -V curl
 
 # RUNTIME REQUIREMENTS
 
-* [Ansible](https://www.ansible.com/)
+* [Ansible](https://www.ansible.com/) 2+
 
 # BUILDTIME REQUIREMENTS
 

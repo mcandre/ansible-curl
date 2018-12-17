@@ -6,86 +6,17 @@
     - ansible_python_interpreter: python
   hosts: all
   tasks:
-    - name: "{{ task_name }} (RHEL, dnf)"
+    - name: "{{ task_name }} (RHEL)"
       debug:
-        msg: "Keeping {{ package_name }} installed in order to maintain RPM base install integrity"
-      when: ansible_os_family == 'RedHat' and ansible_pkg_mgr == 'dnf'
-    - name: "{{ task_name }} (RHEL, yum)"
-      debug:
-        msg: "Keeping {{ package_name }} installed in order to maintain RPM base install integrity"
-      when: ansible_os_family == 'RedHat' and ansible_pkg_mgr == 'yum'
-    - name: "{{ task_name }} (Debian)"
-      apt:
+        msg: "Keeping {{ package_name }} as-is for base install integrity"
+      when: ansible_os_family == 'RedHat'
+    - name: "{{ task_name }} (UNIX)"
+      package:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-      when: ansible_os_family == 'Debian' # or ansible_distribution == 'DilOS'
-    - name: "{{ task_name }} (Suse)"
-      zypper:
-        name: "{{ packge_name }}"
-        state: "{{ package_state }}"
-      when: ansible_os_family == 'Suse'
-    - name: "{{ task_name }} (Alpine)"
-      apk:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_os_family == 'Alpine'
-    - name: "{{ task_name }} (OpenWrt)"
-      opkg:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_distribution == 'OpenWrt'
-    - name: "{{ task_name }} (Archlinux)"
-      pacman:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_os_family == 'Archlinux'
-    - name: "{{ task_name }} (Gentoo)"
-      portage:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_os_family == 'Gentoo'
-    - name: "{{ task_name }} (Slackware)"
-      slackpkg:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_os_family == 'Slackware'
-    - name: "{{ task_name }} (Mandrake)"
-      urpmi:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_os_family == 'Mandrake'
-    - name: "{{ task_name }} (FreeBSD)"
-      pkgng:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_os_family == 'FreeBSD'
-    # - name: "{{ task_name }} (Dragonfly)"
-    #   pkg:
-    #     name: "{{ package_name }}"
-    #     state: "{{ package_state }}"
-    #   when: ansible_distribution == 'Dragonfly'
-    - name: "{{ task_name }} (OpenBSD)"
-      openbsd_pkg:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_distribution == 'OpenBSD'
-    - name: "{{ task_name }} (NetBSD/SmartOS/MINIX)"
-      pkgin:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_distribution in ['NetBSD', 'SmartOS'] # , 'MINIX'
-    - name: "{{ task_name }} (Darwin, Homebrew)"
-      homebrew:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_os_family == 'Darwin' and ansible_pkg_mgr == 'homebrew'
-    - name: "{{ task_name }} (Darwin, MacPorts)"
-      macports:
-        name: "{{ package_name }}"
-        state: "{{ package_state }}"
-      when: ansible_os_family == 'Darwin' and ansible_pkg_mgr == 'macports'
+      when: ansible_os_family != 'Windows' and ansible_os_family != 'RedHat'
     - name: "{{ task_name }} (Windows)"
       win_chocolatey:
-        name: "{{ package_name }}"
+        name: "{{ packge_name }}"
         state: "{{ package_state }}"
       when: ansible_os_family == 'Windows'
