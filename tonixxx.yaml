@@ -4,6 +4,7 @@ project: ansible-curl
 steps:
     - cd "$TONIXXX_SYNC"
     - sudo pip install -r requirements.txt
+    - sudo pip install -r requirements-dev.txt
     - invoke lint
     - sudo invoke test
 
