@@ -9,6 +9,7 @@ steps:
     - sudo invoke test
 
 recipes:
+    # Missing libssl-devel
     # - label: dragonflybsd-amd64
     #   box: mcandre/ansible-curl-testbot-dragonfly
     - label: freebsd-amd64
@@ -16,8 +17,8 @@ recipes:
     # - label: haiku-amd64
     #   box: mcandre/ansible-curl-testbot-haiku-amd64
     #   guesttype: Haiku
-    # - label: hardenedbsd-amd64
-    #   box: mcandre/ansible-curl-testbot-hardenedbsd
+    - label: hardenedbsd-amd64
+      box: mcandre/ansible-curl-testbot-hardenedbsd
     # - label: illumos-amd64
     #   guesttype: SmartOSGZ
     #   box: mcandre/ansible-curl-testbot-smartos
