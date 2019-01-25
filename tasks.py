@@ -12,6 +12,11 @@ def test():
 
 
 @task
+def safety():
+    run('safety check')
+
+
+@task
 def pep8():
     run('pep8 .')
 
@@ -61,6 +66,7 @@ def ansible_lint():
 
 
 @task(pre=[
+    safety,
     pep8,
     pylint,
     pyflakes,
