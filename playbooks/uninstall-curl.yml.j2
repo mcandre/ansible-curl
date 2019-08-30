@@ -1,22 +1,22 @@
 ---
 - vars:
-    - task_name: Uninstall cURL
-    - package_name: curl
-    - package_state: absent
-    - ansible_python_interpreter: python
-  hosts: all
+    - task_name: "Uninstall cURL"
+    - package_name: "curl"
+    - package_state: "absent"
+    - ansible_python_interpreter: "python"
+  hosts: "all"
   tasks:
     - name: "{{ task_name }} (RHEL)"
       debug:
         msg: "Keeping {{ package_name }} as-is for base install integrity"
-      when: ansible_os_family == 'RedHat'
+      when: "ansible_os_family == 'RedHat'"
     - name: "{{ task_name }} (UNIX)"
       package:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-      when: ansible_os_family != 'Windows' and ansible_os_family != 'RedHat'
+      when: "ansible_os_family != 'Windows' and ansible_os_family != 'RedHat'"
     - name: "{{ task_name }} (Windows)"
       win_chocolatey:
         name: "{{ packge_name }}"
         state: "{{ package_state }}"
-      when: ansible_os_family == 'Windows'
+      when: "ansible_os_family == 'Windows'"

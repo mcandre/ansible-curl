@@ -1,18 +1,18 @@
 ---
 - vars:
-    - task_name: Install cURL
-    - package_name: curl
-    - package_state: present
-    - ansible_python_interpreter: python
-  hosts: all
+    - task_name: "Install cURL"
+    - package_name: "curl"
+    - package_state: "present"
+    - ansible_python_interpreter: "python"
+  hosts: "all"
   tasks:
     - name: "{{ task_name }} (UNIX)"
       package:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-      when: ansible_os_family != 'Windows'
+      when: "ansible_os_family != 'Windows'"
     - name: "{{ task_name }} (Windows)"
       win_chocolatey:
         name: "{{ package_name }}"
         state: "{{ package_state }}"
-      when: ansible_os_family == 'Windows'
+      when: "ansible_os_family == 'Windows'"

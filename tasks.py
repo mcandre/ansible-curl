@@ -6,9 +6,9 @@ from invoke import run, task
 
 @task
 def test():
-    run('ansible-playbook -i hosts.ini playbooks/install-curl.yml')
+    run('ansible-playbook -i hosts.ini playbooks/install-curl.yml.j2')
     run('curl -s http://icanhazip.com')
-    run('ansible-playbook -i hosts.ini playbooks/uninstall-curl.yml')
+    run('ansible-playbook -i hosts.ini playbooks/uninstall-curl.yml.j2')
 
 
 @task
